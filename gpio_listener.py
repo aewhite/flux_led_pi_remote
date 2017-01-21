@@ -24,3 +24,5 @@ def read_gpio():
 
         prev_states = list(states)
         time.sleep(0.1)
+
+setup_gpio()

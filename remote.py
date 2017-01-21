@@ -1,5 +1,6 @@
 from flux_led import WifiLedBulb
 import sys
+import gpio_listener
 
 
 def read_test_input():
@@ -29,12 +30,13 @@ def handle_state(bulbs, state):
 
 
 def main():
+
     ip_addresses = sys.argv[1:]
     bulbs = [WifiLedBulb(ip_address) for ip_address in ip_addresses]
 
     prev_state = [False, False, False, False]
     while True:
-        state = read_test_input()
+        state = gpio_listener.read_gpio()
         if state == prev_state:
             continue
             
